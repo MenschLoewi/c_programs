@@ -5,6 +5,7 @@
 #include <ctype.h>
 #include <stdbool.h>
 
+
 //Checkers
 bool valid_binary_string(const char *binary);
 bool valid_decimal_string(const char *decimal);
@@ -31,9 +32,9 @@ int main(int argc, char *argv[]){
     assert(valid_binary_string("1210")==false);
     assert(valid_binary_string("abc110")==false);
    
-    //assert(valid_decimal_string("123")==true);
-    //assert(valid_decimal_string("1010")==true);
-    //assert(valid_decimal_string("abc")==false);
+    assert(valid_decimal_string("123")==true);
+    assert(valid_decimal_string("1010")==true);
+    assert(valid_decimal_string("abc")==false);
     //assert(valid_hexadecimal_string("A0")==true);
     //assert(valid_hexadecimal_stirng("G2H0")==false);
 
@@ -68,7 +69,11 @@ bool valid_binary_string(const char *binary){
 
 //check if input is empty or not in [0..9] without leading zero
 bool valid_decimal_string(const char *decimal){
-
-
-
+    int i = 0;
+    if(decimal[0]=='\0' || decimal[0]=='0') return false;
+    while(isdigit(decimal[i])){    
+        i++;
+        if(decimal[i]=='\0') return true;
+    }
+    return false;
 }
