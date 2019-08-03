@@ -10,6 +10,7 @@
 bool valid_binary_string(const char *binary);
 bool valid_decimal_string(const char *decimal);
 bool valid_hexadecimal_string(const char *hexadecimal);
+bool isxalpha(const char x);
 
 //Conversion functions
 char *decimal_to_binary(const char *decimal);
@@ -31,21 +32,20 @@ int main(int argc, char *argv[]){
     assert(valid_binary_string("1010")==true);
     assert(valid_binary_string("1210")==false);
     assert(valid_binary_string("abc110")==false);
-   
     assert(valid_decimal_string("123")==true);
     assert(valid_decimal_string("1010")==true);
     assert(valid_decimal_string("abc")==false);
-    //assert(valid_hexadecimal_string("A0")==true);
-    //assert(valid_hexadecimal_stirng("G2H0")==false);
+    assert(valid_hexadecimal_string("A0")==true);
+    assert(valid_hexadecimal_string("G2H0")==false);
 
-    /*
+    
     assert(strcmp("1010",decimal_to_binary("10"))==0);
     assert(strcmp("10",binary_to_decimal("1010"))==0);
     assert(strcmp("64",decimal_to_hexadecimal("100"))==0);
     assert(strcmp("100",hexadecimal_to_decimal("64"))==0);
     assert(strcmp("64",binary_to_hexadecimal("1100100"))==0);
     assert(strcmp("1100100",hexadecimal_to_binary("64"))==0);
-    */
+   
     /*
     assert(strcmp("1010",bin_add("10","1000"))==0);
     assert(strcmp("10",bin_sub("1010","1000"))==0);
@@ -76,4 +76,29 @@ bool valid_decimal_string(const char *decimal){
         if(decimal[i]=='\0') return true;
     }
     return false;
+}
+
+//check if input is empty or not in [0..9A-F] 
+bool valid_hexadecimal_string(const char *hexadecimal){
+    int i = 0;
+    if(hexadecimal[0]=='\0' || hexadecimal[0]=='0') return false;
+    while(isdigit(hexadecimal[i]) || isxalpha(hexadecimal[i] || hexadecimal[i]=='\0')){
+        i++;
+	if(hexadecimal[i]=='\0') return true;
+    }
+    return false;
+}
+
+//check if input is
+bool isxalpha(const char x){
+    return (x <= 46 && x >= 41) || (x <= 66 && x >= 61) ? true : false;
+}
+
+char *decimal_to_binary(const char *decimal){
+    if(!valid_decimal_string(decimal))
+        return ''
+}
+
+char *binary_to_decimal(const char *binary){
+
 }
