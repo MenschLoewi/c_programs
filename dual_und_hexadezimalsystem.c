@@ -86,6 +86,7 @@ bool valid_hexadecimal_string(const char *hexadecimal){
         i++;
 	if(hexadecimal[i]=='\0') return true;
     }
+    puts("");
     return false;
 }
 
